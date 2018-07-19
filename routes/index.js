@@ -8,6 +8,6 @@ api.get('/test',(req,res)=>{
     res.status(200).send({message:"UP SERVICE"})
 })
 
-api.get('/comando',util.ejecutarComandos)
+api.get('/comando/:comando',util.ejecutarComandos)
 
 module.exports = api
