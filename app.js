@@ -6,21 +6,19 @@ const app = express()
 const api = require('./routes')
 const { spawn } = require('child_process');
 
-/*var runPy = new Promise(function(success, nosuccess) {
+var runPy = function(pathScrip,req,res) {
 
-    const { spawn } = require('child_process');
-    const pyprog = spawn('python', ['./util/Add.py']);
+    const pyprog = spawn('python', [pathScrip]);
 
     pyprog.stdout.on('data', function(data) {
 
-        success(data);
+        res.status(200).send(data.toString());
     });
 
     pyprog.stderr.on('data', (data) => {
-
-        nosuccess(data);
+        res.status(500).send(data.toString());
     });
-});*/
+}
 
 
 app.use(bodyParser.urlencoded({extended:false}))
@@ -34,15 +32,27 @@ app.get('',(req,res)=>{
     res.status(200).send({message:"UP SERVICE"})
 })
 
-app.get('/test',(req,res)=>{
-        var process = spawn('python', ['./util/ada.py'])
+app.get('/comando/1',(req,res)=>{
 
-        process.stdout.on('data', function(data) {
-            res.status(200).send(data.toString());
-        });
+    runPy("./util/python/avanzar.py",req,res)
+})
+
+app.get('/comando/2',(req,res)=>{
+
+    runPy("./util/python/retroceder.py",req,res)
+})
+
+app.get('/comando/3',(req,res)=>{
+
+    runPy("./util/python/derecha.py",req,res)
+})
+
+app.get('/comando/4',(req,res)=>{
+
+    runPy("./util/python/izquierda.py",req,res)
+})
+
     
-    })
-
 
 
 module.exports = app
