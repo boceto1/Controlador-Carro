@@ -52,6 +52,11 @@ app.get('/comando/4',(req,res)=>{
     runPy("./util/python/izquierda.py",req,res)
 })
 
+app.get('/comando/0',(req,res)=>{
+
+    runPy("./util/python/detener.py",req,res)
+})
+
     
 
 

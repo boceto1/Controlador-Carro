@@ -21,10 +21,10 @@ GPIO.setup(2, GPIO.OUT)
 GPIO.setup(3, GPIO.OUT)
 
 
-GPIO.output(2, GPIO.HIGH)
+GPIO.output(9, GPIO.LOW)
+GPIO.output(10, GPIO.LOW)
+
+GPIO.output(2, GPIO.LOW)
 GPIO.output(3, GPIO.LOW)
 
-GPIO.output(9, GPIO.HIGH)
-GPIO.output(10, GPIO.LOW)
-  
-print("AVANZAR")
+print("Detener")

@@ -1,21 +1,30 @@
-"""
-Giro a la Derecha, Motor derecho detenido
-mientras motor izquierdo avanza  
-Gp 11: 1 |  Gp 16: 0   
-Gp 15: 0 |  Gp 18: 0
-"""
+import sys
+import time
 import RPi.GPIO as GPIO
-GPIO.setmode(GPIO.BOARD)
-GPIO.setup(11,GPIO.OUT)#Motor1
-GPIO.setup(15,GPIO.OUT)
 
-GPIO.setup(16,GPIO.OUT)#motor2
-GPIO.setup(18,GPIO.OUT)
+#mode=GPIO.getmode()
 
-GPIO.output(11,False)
-GPIO.output(15,True)
+"""
+'Forward=26
+Backward=20
+"""
+sleeptime=1
 
-GPIO.output(16,True)
-GPIO.output(18,True)
+GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
+##MOTOR 1
+GPIO.setup(9, GPIO.OUT)
+GPIO.setup(10, GPIO.OUT)
 
-print("derecha")
+##MOTOR 2
+GPIO.setup(2, GPIO.OUT)
+GPIO.setup(3, GPIO.OUT)
+
+GPIO.output(2, GPIO.HIGH)
+GPIO.output(3, GPIO.LOW)
+ 
+GPIO.output(9, GPIO.LOW)
+GPIO.output(10, GPIO.LOW)
+  
+
+print("Derecha")
